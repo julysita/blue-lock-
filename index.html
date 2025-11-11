@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Proyecto Blue Lock — Espacio Oficial</title>
+  <style>
+    :root {
+      --bg: #0e1420;
+      --accent: #00a3ff;
+      --muted: #9aa6b2;
+      --radius: 14px;
+      --ff: 'Segoe UI', Roboto, sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { height: 100%; }
+
+    body {
+      font-family: var(--ff);
+      background: var(--bg);
+      color: #e6eef6;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 40px 20px;
+      overflow-x: hidden;
+    }
+
+    /* Fondo animado base estilo rompecabezas */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0; left: 0;
+      width: 200%; height: 200%;
+      background-image:
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+      animation: puzzleMove 25s linear infinite;
+      z-index: 0;
+      transform: rotate(2deg);
+    }
+
+    @keyframes puzzleMove {
+      from { transform: translate(0,0) rotate(2deg); }
+      to { transform: translate(-60px,-60px) rotate(2deg); }
+    }
+
+    .wrap { width: 100%; max-width: 900px; position: relative; z-index: 2; }
+
+    h1 {
+      font-size: 26px;
+      color: var(--accent);
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    p.desc {
+      text-align: center;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 40px;
+      font-size: 15px;
+    }
+
+    section {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.05);
+      border-radius: var(--radius);
+      padding: 20px;
+      margin-bottom: 20px;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    section:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+    }
+
+    h2 {
+      font-size: 18px;
+      color: #fff;
+      margin-bottom: 6px;
+    }
+
+    p {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.5;
+      margin-bottom: 10px;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    a:hover { text-decoration: underline; }
+
+    footer {
+      text-align: center;
+      color: var(--muted);
+      font-size: 13px;
+      margin-top: 40px;
+    }
+
+    /* Botón Olfato de Gol */
+    .olfato-btn {
+      display: block;
+      margin: 0 auto 30px auto;
+      background: var(--accent);
+      color: white;
+      border: none;
+      padding: 10px 22px;
+      border-radius: var(--radius);
+      font-size: 15px;
+      cursor: pointer;
+      transition: background 0.3s;
+      z-index: 3;
+      position: relative;
+    }
+
+    .olfato-btn:hover { background: #0080cc; }
+
+    /* Piezas cayendo */
+    .puzzle-piece {
+      position: fixed;
+      top: -20px;
+      color: rgba(255,255,255,0.1);
+      font-size: 20px;
+      pointer-events: none;
+      animation: fall linear infinite;
+    }
+
+    @keyframes fall {
+      to { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+    }
+
+    @media (max-width: 600px) {
+      h1 { font-size: 22px; }
+      p.desc { font-size: 14px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Proyecto Blue Lock</h1>
+    <p class="desc">Este es el espacio oficial donde organizamos y compartimos todos los conceptos, habilidades y mecánicas creadas para nuestro grupo de rol basado en el universo de Blue Lock. Aquí encontrarás todo lo necesario para sumergirte en la experiencia táctica y narrativa de nuestros enfrentamientos.</p>
+
+    <button class="olfato-btn" id="olfato">Olfato de Gol</button>
+
+    <section>
+      <h2>Guía para nuevos</h2>
+      <p>En nuestro team, cada jugador obtiene su estilo y habilidades a través de un sistema de spins. Con ellas podrás desbloquear rarezas, conseguir pasivas únicas y potenciar tus stats para usarlas en los partidos de rol. Gira, descubre tu rareza y lleva tu juego al siguiente nivel.</p>
+      <a href="https://guiaparanuevos.carrd.co/" target="_blank">Leer</a>
+    </section>
+
+    <section>
+      <h2>Reglas de los partidos</h2>
+      <p>Reglas básicas y avanzadas para los encuentros 1v1, 2v2 o partidos completos. Todo lo que necesitás saber para jugar con coherencia y competitividad.</p>
+      <a href="https://sistemadejuego.carrd.co/" target="_blank">Leer</a>
+    </section>
+
+    <section>
+      <h2>Sinergias de pasivas</h2>
+      <p>Combinaciones especiales entre habilidades de diferentes personajes que generan efectos únicos dentro del campo.</p>
+      <a href="https://sinergiaspasivas.carrd.co/" target="_blank">Leer</a>
+    </section>
+
+    <section>
+      <h2>Estado de flujo</h2>
+      <p>Mecanismo clave que potencia a los jugadores en momentos decisivos. Aprende cómo se activa.</p>
+      <a href="https://estadodeflow.carrd.co/" target="_blank">Leer</a>
+    </section>
+
+    <section>
+      <h2>Reacción Química</h2>
+      <p>Sistema de vínculos entre jugadores que permite desbloquear habilidades compartidas, bonificaciones y jugadas combinadas.</p>
+      <a href="https://reaccionquimica.carrd.co/" target="_blank">Leer</a>
+    </section>
+
+    <section>
+      <h2>Los tipos de metavisión</h2>
+      <p>¿Qué es la Metavisión? ¿Cuáles son los tipos de Metavisión y sus usuarios? Descubrilo aquí.</p>
+      <a href="https://metavisionproyecto.carrd.co/" target="_blank">Leer</a>
+    </section>
+
+  <section> 
+  <h2>Sinergias del team</h2>
+  <p>Biblioteca completa de las sinergias creadas por las personas del team, combinando dos de sus pasivas.</p>
+
+  <a href="sinergias.html" class="btn">Ver sinergias</a>
+</section>
+
+    <footer>© July hizo esta página</footer>
+  </div>
+
+  <script>
+    const btn = document.getElementById('olfato');
+
+    btn.addEventListener('click', () => {
+      for (let i = 0; i < 20; i++) {
+        const piece = document.createElement('div');
+        piece.classList.add('puzzle-piece');
+        piece.textContent = '🧩';
+        piece.style.left = Math.random() * 100 + 'vw';
+        piece.style.animationDuration = 5 + Math.random() * 5 + 's';
+        piece.style.fontSize = 16 + Math.random() * 10 + 'px';
+        document.body.appendChild(piece);
+
+        setTimeout(() => piece.remove(), 10000);
+      }
+    });
+  </script>
+</body>
+</html>
