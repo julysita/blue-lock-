@@ -1,222 +1,292 @@
 <!doctype html>
 <html lang="es">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Proyecto Blue Lock — Espacio Oficial</title>
-  <style>
-    :root {
-      --bg: #0e1420;
-      --accent: #00a3ff;
-      --muted: #9aa6b2;
-      --radius: 14px;
-      --ff: 'Segoe UI', Roboto, sans-serif;
-    }
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Proyecto Blue Lock — Espacio Oficial</title>
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html, body { height: 100%; }
+<style>
+:root{
+  --blue:#00b7ff;
+  --cyan:#7df9ff;
+  --dark:#02040a;
+  --glass:rgba(10,20,40,.55);
+}
 
-    body {
-      font-family: var(--ff);
-      background: var(--bg);
-      color: #e6eef6;
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
-      padding: 40px 20px;
-      overflow-x: hidden;
-    }
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Segoe UI', sans-serif;
+}
 
-    /* Fondo animado base estilo rompecabezas */
-    body::before {
-      content: '';
-      position: fixed;
-      top: 0; left: 0;
-      width: 200%; height: 200%;
-      background-image:
-        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px),
-        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px);
-      background-size: 60px 60px;
-      animation: puzzleMove 25s linear infinite;
-      z-index: 0;
-      transform: rotate(2deg);
-    }
+html,body{
+  height:100%;
+  overflow-x:hidden;
+  color:#eaf6ff;
+}
 
-    @keyframes puzzleMove {
-      from { transform: translate(0,0) rotate(2deg); }
-      to { transform: translate(-60px,-60px) rotate(2deg); }
-    }
+/* VIDEO DE FONDO */
+.bg-video{
+  position:fixed;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  z-index:-2;
+  filter:brightness(.35) contrast(1.1);
+}
 
-    .wrap { width: 100%; max-width: 900px; position: relative; z-index: 2; }
+/* overlay */
+.overlay{
+  position:fixed;
+  inset:0;
+  background:
+    radial-gradient(circle at top, rgba(0,180,255,.15), transparent 60%),
+    linear-gradient(to bottom, rgba(0,0,0,.7), rgba(0,0,0,.9));
+  z-index:-1;
+}
 
-    h1 {
-      font-size: 26px;
-      color: var(--accent);
-      text-align: center;
-      margin-bottom: 20px;
-    }
+/* PARTICULAS */
+.particle{
+  position:fixed;
+  width:2px;
+  height:2px;
+  background:var(--cyan);
+  opacity:.4;
+  animation: drift linear infinite;
+}
 
-    p.desc {
-      text-align: center;
-      color: var(--muted);
-      line-height: 1.6;
-      margin-bottom: 40px;
-      font-size: 15px;
-    }
+@keyframes drift{
+  from{ transform:translateY(110vh); }
+  to{ transform:translateY(-10vh); }
+}
 
-    section {
-      background: rgba(255,255,255,0.02);
-      border: 1px solid rgba(255,255,255,0.05);
-      border-radius: var(--radius);
-      padding: 20px;
-      margin-bottom: 20px;
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
+.wrap{
+  max-width:900px;
+  margin:auto;
+  padding:50px 20px;
+}
 
-    section:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 10px 25px rgba(0,0,0,0.4);
-    }
+h1{
+  text-align:center;
+  font-size:32px;
+  color:var(--blue);
+  text-shadow:0 0 20px rgba(0,180,255,.6);
+  margin-bottom:15px;
+  animation: glow 3s ease-in-out infinite;
+}
 
-    h2 {
-      font-size: 18px;
-      color: #fff;
-      margin-bottom: 6px;
-    }
+@keyframes glow{
+  50%{ text-shadow:0 0 35px rgba(0,180,255,.9); }
+}
 
-    p {
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.5;
-      margin-bottom: 10px;
-    }
+.desc{
+  text-align:center;
+  color:#b8d6f0;
+  font-size:15px;
+  line-height:1.7;
+  margin-bottom:40px;
+}
 
-    a {
-      color: var(--accent);
-      text-decoration: none;
-      font-size: 14px;
-    }
+/* BOTÓN OLFATO */
+.olfato-btn{
+  position:relative;
+  display:block;
+  margin:0 auto 45px;
+  padding:14px 36px;
+  font-size:16px;
+  letter-spacing:1px;
+  color:#fff;
+  background:transparent;
+  border:2px solid var(--blue);
+  border-radius:50px;
+  cursor:pointer;
+  overflow:hidden;
+}
 
-    a:hover { text-decoration: underline; }
+.olfato-btn::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:radial-gradient(circle, rgba(0,180,255,.5), transparent 60%);
+  opacity:0;
+  transition:.4s;
+}
 
-    footer {
-      text-align: center;
-      color: var(--muted);
-      font-size: 13px;
-      margin-top: 40px;
-    }
+.olfato-btn:hover::before{
+  opacity:1;
+}
 
-    /* Botón Olfato de Gol */
-    .olfato-btn {
-      display: block;
-      margin: 0 auto 30px auto;
-      background: var(--accent);
-      color: white;
-      border: none;
-      padding: 10px 22px;
-      border-radius: var(--radius);
-      font-size: 15px;
-      cursor: pointer;
-      transition: background 0.3s;
-      z-index: 3;
-      position: relative;
-    }
+.olfato-btn::after{
+  content:"";
+  position:absolute;
+  inset:-6px;
+  border-radius:50px;
+  border:2px solid rgba(0,180,255,.4);
+  animation:pulse 2.5s infinite;
+}
 
-    .olfato-btn:hover { background: #0080cc; }
+@keyframes pulse{
+  50%{ transform:scale(1.1); opacity:0; }
+}
 
-    /* Piezas cayendo */
-    .puzzle-piece {
-      position: fixed;
-      top: -20px;
-      color: rgba(255,255,255,0.1);
-      font-size: 20px;
-      pointer-events: none;
-      animation: fall linear infinite;
-    }
+/* SECCIONES */
+section{
+  background:var(--glass);
+  backdrop-filter:blur(10px);
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:16px;
+  padding:22px;
+  margin-bottom:22px;
+  transform:translateY(30px);
+  opacity:0;
+  animation:enter .8s ease forwards;
+}
 
-    @keyframes fall {
-      to { transform: translateY(110vh) rotate(360deg); opacity: 0; }
-    }
+section:nth-child(n){
+  animation-delay:.2s;
+}
 
-    @media (max-width: 600px) {
-      h1 { font-size: 22px; }
-      p.desc { font-size: 14px; }
-    }
-  </style>
+@keyframes enter{
+  to{ transform:none; opacity:1; }
+}
+
+h2{
+  font-size:18px;
+  margin-bottom:6px;
+  color:#fff;
+}
+
+p{
+  font-size:14px;
+  color:#c7dbf0;
+  line-height:1.6;
+  margin-bottom:10px;
+}
+
+a{
+  color:var(--cyan);
+  text-decoration:none;
+}
+
+a:hover{
+  text-decoration:underline;
+}
+
+footer{
+  text-align:center;
+  margin-top:40px;
+  font-size:13px;
+  color:#8fb6d8;
+}
+
+/* PIEZAS OLFATO */
+.puzzle-piece{
+  position:fixed;
+  top:-30px;
+  font-size:22px;
+  opacity:.15;
+  animation:fall linear infinite;
+  pointer-events:none;
+}
+
+@keyframes fall{
+  to{
+    transform:translateY(120vh) rotate(360deg);
+    opacity:0;
+  }
+}
+</style>
 </head>
+
 <body>
-  <div class="wrap">
-    <h1>Proyecto Blue Lock</h1>
-    <p class="desc">Este es el espacio oficial donde organizamos y compartimos todos los conceptos, habilidades y mecánicas creadas para nuestro grupo de rol basado en el universo de Blue Lock. Aquí encontrarás todo lo necesario para sumergirte en la experiencia táctica y narrativa de nuestros enfrentamientos.</p>
 
-    <button class="olfato-btn" id="olfato">Olfato de Gol</button>
+<!-- CAMBIÁ el nombre del video por el tuyo -->
+<video class="bg-video" autoplay muted loop>
+  <source src="video.mp4" type="video/mp4">
+</video>
 
-    <section>
-      <h2>Guía para nuevos</h2>
-      <p>En nuestro team, cada jugador obtiene su estilo y habilidades a través de un sistema de spins. Con ellas podrás desbloquear rarezas, conseguir pasivas únicas y potenciar tus stats para usarlas en los partidos de rol. Gira, descubre tu rareza y lleva tu juego al siguiente nivel.</p>
-      <a href="https://guiaparanuevos.carrd.co/" target="_blank">Leer</a>
-    </section>
+<div class="overlay"></div>
 
-    <section>
-      <h2>Reglas de los partidos</h2>
-      <p>Reglas básicas y avanzadas para los encuentros 1v1, 2v2 o partidos completos. Todo lo que necesitás saber para jugar con coherencia y competitividad.</p>
-      <a href="https://sistemadejuego.carrd.co/" target="_blank">Leer</a>
-    </section>
+<div class="wrap">
+  <h1>Proyecto Blue Lock</h1>
 
-    <section>
-      <h2>Sinergias de pasivas</h2>
-      <p>Combinaciones especiales entre habilidades de diferentes personajes que generan efectos únicos dentro del campo.</p>
-      <a href="https://sinergiaspasivas.carrd.co/" target="_blank">Leer</a>
-    </section>
+  <p class="desc">
+    Este es el espacio oficial donde organizamos y compartimos todos los conceptos, habilidades y mecánicas creadas para nuestro grupo de rol basado en el universo de Blue Lock. Aquí encontrarás todo lo necesario para sumergirte en la experiencia táctica y narrativa de nuestros enfrentamientos.
+  </p>
 
-    <section>
-      <h2>Estado de flujo</h2>
-      <p>Mecanismo clave que potencia a los jugadores en momentos decisivos. Aprende cómo se activa.</p>
-      <a href="https://estadodeflow.carrd.co/" target="_blank">Leer</a>
-    </section>
+  <button class="olfato-btn" id="olfato">Olfato de Gol</button>
 
-    <section>
-      <h2>Reacción Química</h2>
-      <p>Sistema de vínculos entre jugadores que permite desbloquear habilidades compartidas, bonificaciones y jugadas combinadas.</p>
-      <a href="https://reaccionquimica.carrd.co/" target="_blank">Leer</a>
-    </section>
+  <section>
+    <h2>Guía para nuevos</h2>
+    <p>En nuestro team, cada jugador obtiene su estilo y habilidades a través de un sistema de spins...</p>
+    <a href="https://guiaparanuevos.carrd.co/" target="_blank">Leer</a>
+  </section>
 
-    <section>
-      <h2>Los tipos de metavisión</h2>
-      <p>¿Qué es la Metavisión? ¿Cuáles son los tipos de Metavisión y sus usuarios? Descubrilo aquí.</p>
-      <a href="https://metavisionproyecto.carrd.co/" target="_blank">Leer</a>
-    </section>
+  <section>
+    <h2>Reglas de los partidos</h2>
+    <p>Reglas básicas y avanzadas para los encuentros 1v1, 2v2 o partidos completos...</p>
+    <a href="https://sistemadejuego.carrd.co/" target="_blank">Leer</a>
+  </section>
 
-  <section> 
-  <h2>Sinergias del team</h2>
-  <p>Biblioteca completa de las sinergias creadas por las personas del team, combinando dos de sus pasivas.</p>
+  <section>
+    <h2>Sinergias de pasivas</h2>
+    <p>Combinaciones especiales entre habilidades de diferentes personajes...</p>
+    <a href="https://sinergiaspasivas.carrd.co/" target="_blank">Leer</a>
+  </section>
 
-  <a href="sinergias.html" class="btn">Ver sinergias</a>
-    
-    
-    <a href="sinergias2.html" class="btn">Ver sinergias de la temporada dos</a>
-</section>
+  <section>
+    <h2>Estado de flujo</h2>
+    <p>Mecanismo clave que potencia a los jugadores en momentos decisivos...</p>
+    <a href="https://estadodeflow.carrd.co/" target="_blank">Leer</a>
+  </section>
 
-    <footer>© July hizo esta página</footer>
-  </div>
+  <section>
+    <h2>Reacción Química</h2>
+    <p>Sistema de vínculos entre jugadores que permite desbloquear habilidades compartidas...</p>
+    <a href="https://reaccionquimica.carrd.co/" target="_blank">Leer</a>
+  </section>
 
-  <script>
-    const btn = document.getElementById('olfato');
+  <section>
+    <h2>Los tipos de metavisión</h2>
+    <p>¿Qué es la Metavisión? ¿Cuáles son los tipos de Metavisión y sus usuarios?</p>
+    <a href="https://metavisionproyecto.carrd.co/" target="_blank">Leer</a>
+  </section>
 
-    btn.addEventListener('click', () => {
-      for (let i = 0; i < 20; i++) {
-        const piece = document.createElement('div');
-        piece.classList.add('puzzle-piece');
-        piece.textContent = '🧩';
-        piece.style.left = Math.random() * 100 + 'vw';
-        piece.style.animationDuration = 5 + Math.random() * 5 + 's';
-        piece.style.fontSize = 16 + Math.random() * 10 + 'px';
-        document.body.appendChild(piece);
+  <section>
+    <h2>Sinergias del team</h2>
+    <p>Biblioteca completa de las sinergias creadas por las personas del team.</p>
+    <a href="sinergias.html">Ver sinergias</a><br>
+    <a href="sinergias2.html">Ver sinergias de la temporada dos</a>
+  </section>
 
-        setTimeout(() => piece.remove(), 10000);
-      }
-    });
-  </script>
+  <footer>© July hizo esta página</footer>
+</div>
+
+<script>
+/* partículas */
+for(let i=0;i<40;i++){
+  const p=document.createElement('div');
+  p.className='particle';
+  p.style.left=Math.random()*100+'vw';
+  p.style.animationDuration=8+Math.random()*10+'s';
+  document.body.appendChild(p);
+}
+
+/* olfato */
+document.getElementById('olfato').onclick=()=>{
+  for(let i=0;i<25;i++){
+    const piece=document.createElement('div');
+    piece.className='puzzle-piece';
+    piece.textContent='🧩';
+    piece.style.left=Math.random()*100+'vw';
+    piece.style.animationDuration=4+Math.random()*5+'s';
+    document.body.appendChild(piece);
+    setTimeout(()=>piece.remove(),9000);
+  }
+}
+</script>
+
 </body>
 </html>
-
