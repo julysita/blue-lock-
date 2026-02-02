@@ -1,0 +1,516 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sinergias del Team — Blue Lock</title>
+
+<style>
+:root{
+  --blue:#00a3ff;
+  --dark:#050b14;
+  --glass:rgba(10,20,40,.55);
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Segoe UI', sans-serif;
+}
+
+html,body{
+  height:100%;
+  overflow-x:hidden;
+  color:white;
+}
+
+/* VIDEO DE FONDO */
+.video-bg{
+  position:fixed;
+  inset:0;
+  z-index:-3;
+  overflow:hidden;
+}
+.video-bg video{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  filter:brightness(.35) contrast(1.2) saturate(1.2);
+}
+
+/* OVERLAY AZUL ANIMADO */
+.video-bg::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(circle at 50% 50%, rgba(0,163,255,.25), transparent 60%),
+    linear-gradient(180deg, rgba(0,0,0,.7), rgba(0,0,0,.9));
+  animation:pulse 6s infinite alternate;
+}
+
+@keyframes pulse{
+  from{opacity:.6}
+  to{opacity:1}
+}
+
+body{
+  padding:40px 20px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+
+/* TITULO */
+h1{
+  font-size:clamp(28px,4vw,46px);
+  letter-spacing:3px;
+  text-transform:uppercase;
+  color:var(--blue);
+  text-shadow:
+    0 0 10px rgba(0,163,255,.7),
+    0 0 25px rgba(0,163,255,.4);
+  animation:glitch 3s infinite;
+}
+
+@keyframes glitch{
+  0%{text-shadow:0 0 10px var(--blue)}
+  50%{text-shadow:2px 0 20px var(--blue),-2px 0 20px #fff}
+  100%{text-shadow:0 0 10px var(--blue)}
+}
+
+/* BUSCADOR */
+#search{
+  margin:30px 0;
+  padding:14px 18px;
+  width:100%;
+  max-width:420px;
+  background:var(--glass);
+  border:1px solid rgba(0,163,255,.4);
+  border-radius:14px;
+  color:white;
+  outline:none;
+  backdrop-filter:blur(6px);
+}
+#search::placeholder{color:#9ab}
+
+/* CAROUSEL */
+.carousel{
+  width:100%;
+  max-width:780px;
+  height:72vh;
+  overflow:hidden;
+  position:relative;
+}
+
+.slides{
+  display:flex;
+  height:100%;
+  transition:transform .7s cubic-bezier(.77,0,.18,1);
+}
+
+.slide{
+  min-width:100%;
+  background:linear-gradient(160deg, rgba(0,163,255,.08), rgba(0,0,0,.7));
+  border:1px solid rgba(0,163,255,.25);
+  border-radius:22px;
+  padding:34px;
+  backdrop-filter:blur(8px);
+  box-shadow:
+    0 0 25px rgba(0,163,255,.25),
+    inset 0 0 30px rgba(0,163,255,.15);
+  animation:energy 4s infinite alternate;
+  overflow-y:auto;
+}
+
+.slide h2{
+  margin-bottom:18px;
+}
+
+.slide p{
+  margin-bottom:16px;
+  line-height:1.7;
+}
+
+
+@keyframes energy{
+  from{box-shadow:0 0 15px rgba(0,163,255,.3)}
+  to{box-shadow:0 0 40px rgba(0,163,255,.6)}
+}
+
+.slide h2{
+  font-size:24px;
+  margin-bottom:14px;
+  color:#fff;
+  text-shadow:0 0 10px rgba(0,163,255,.6);
+}
+
+.slide p{
+  font-size:15px;
+  line-height:1.7;
+  color:#cfe9ff;
+  white-space:pre-line;
+}
+
+/* CONTROLES */
+.controls{
+  margin-top:30px;
+  display:flex;
+  justify-content:center;
+  gap:30px;
+}
+
+button{
+  background:transparent;
+  border:2px solid var(--blue);
+  color:white;
+  font-size:22px;
+  padding:10px 22px;
+  border-radius:14px;
+  cursor:pointer;
+  transition:.3s;
+  box-shadow:0 0 15px rgba(0,163,255,.5);
+}
+button:hover{
+  background:var(--blue);
+  color:black;
+  box-shadow:0 0 35px rgba(0,163,255,.9);
+  transform:scale(1.08);
+}
+
+/* FOOTER */
+footer{
+  margin-top:40px;
+  font-size:13px;
+  color:#9ab;
+  opacity:.8;
+}
+
+/* SCROLL */
+.slide::-webkit-scrollbar{width:6px}
+.slide::-webkit-scrollbar-thumb{
+  background:var(--blue);
+  border-radius:10px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- VIDEO -->
+<div class="video-bg">
+  <video autoplay muted loop playsinline>
+    <source src="bg-bluelock.mp4" type="video/mp4">
+  </video>
+</div>
+
+<h1>Sinergias del Team</h1>
+
+<input type="text" id="search" placeholder="Buscar sinergia...">
+
+<div class="carousel">
+  <div class="slides" id="slides">
+
+    <div class="slide">
+<h2>Estilo de metavisión camaleónica x Imaginación del niño monstruo</h2>
+<p>Sinergia entre pasivas de Meguru Bachira x Reo Mikage (Edición Liga Neo Egoísta ambos)
+
+Dos naturalezas y filosofías opuestas convergen en un mismo eje: por un lado, el bailarín que libera su creatividad a través del monstruo que habita en su interior; por el otro, el estratega que se adapta al entorno mudando de piel como un camaleón. Uno florece en un club donde su estilo nace de la libertad, el ritmo, la improvisación y la imaginación pura; el otro se forja desde el dominio físico absoluto, la velocidad, la fuerza y la perfección técnica, integrando y refinando estilos heredados de clubes guiados por maestros de nivel mundial. La mayor destreza adquirida del fútbol inglés y español no es solo técnica, sino una chispa de pasión auténtica por el juego. Una fusión de filosofías que conecta el concepto del “Yo ideal” —visualizar la versión máxima de uno mismo, entrenar sin concesiones para alcanzar ese cénit y utilizar la competencia extrema como motor de evolución— con el ginga: un fútbol inspirado en la capoeira brasileña, definido por regates fluidos, creatividad sin ataduras y un movimiento constante e impredecible, similar a un baile vivo, ligero y letal, como una mariposa que jamás repite el mismo vuelo. Esta sinergia manifiesta una metavisión camaleónica que no se limita a leer el juego, sino que lo reinterpreta en tiempo real, mientras la imaginación del niño monstruo quiebra cualquier patrón lógico preestablecido. El resultado es un estilo híbrido donde la anticipación se funde con la fantasía, y cada acción nace de un equilibrio perfecto entre adaptación absoluta y caos creativo de un niño. Bajo este estado, el jugador obtiene unos beneficios de su creatividad y talento nacido de esta unión. El ginga liberado por el monstruo interior convierte cada gesto ofensivo en una amenaza constante, y esa expresividad salvaje se traduce en un aumento del 20% en Tiro y Regate, donde la ejecución no nace de la repetición, sino de la improvisación pura. Cada finta arrastra intención asesina y cada disparo emerge con una violencia creativa que rompe lecturas defensivas incluso antes de que se formen. La metavisión camaleónica refina ese caos sin domesticarlo, permitiendo que la imaginación fluya con precisión quirúrgica. De esa fusión nace un +18% en Pase, reflejo de una lectura superior del espacio que no solo encuentra líneas invisibles, sino que las crea en el acto, combinando intuición artística con cálculo táctico heredado de estilos de élite. El cuerpo acompaña a la mente en esta mutación constante. La adaptación continua al ritmo del partido impulsa un +16% en Velocidad, una aceleración que no es lineal ni predecible, sino reactiva, capaz de explotar huecos efímeros y aparecer donde el rival ya llega tarde. Por último, la estabilidad del camaleón equilibra la locura del monstruo. La solidez física y la lectura defensiva se elevan en conjunto con un +16% en Físico y 15% en Defensa, resultado de un jugador que no solo ataca con fantasía, sino que resiste, anticipa y se recompone sin perder fluidez, sosteniendo su estilo incluso bajo presión extrema. Además, este estilo se vuelve impredecible incluso para metavisión refinada, alcanzando un nivel capaz de desbordar la lectura avanzada comparable a la de Isagi Yoichi, ya que las decisiones finales no siguen una lógica lineal sino mutante. Frente a metavisión de élite enfocada en la dominación absoluta del espacio, como la de Michael Kaiser, no se vuelve completamente ilegible, pero genera una ligera anomalía perceptiva, un desfase mínimo en la lectura que altera tiempos, ángulos y prioridades, suficiente para abrir una grieta decisiva en jugadas de alto nivel.
+
+Transfiguración mutante
+
+Esta habilidad representa el segundo nivel de tu naturaleza camaleónica. Ya no te limitas a iniciar una jugada bajo la influencia de una pasiva copiada: ahora eres capaz de abandonarla y renacer en otra distinta en pleno desarrollo. Tu fútbol no imita, muta. No se estabiliza, se reinventa. Al activar esta habilidad, seleccionas una pasiva almacenada como base inicial de la jugada. Sin embargo, en el momento crítico puedes declarar un cambio único e irreversible, sustituyéndola por otra pasiva distinta que tengas copiada. La transición debe anunciarse de forma explícita mediante la fórmula: Transfiguración mutante: [pasiva inicial] -> Transfiguración mutante: [pasiva final]. Desde ese instante, la jugada continúa únicamente bajo la pasiva final, sin posibilidad de regresar a la anterior ni de ejecutar un tercer cambio. La letalidad de esta habilidad reside en el engaño estructural que genera. Inicias la acción bajo un estilo que el rival intenta leer, contrarrestar o anticipar, pero justo cuando creen haber encontrado la respuesta, descartas esa piel y adoptas otra completamente distinta. El plan defensivo se derrumba en el clímax de la jugada. El cambio solo puede realizarse una vez por activación. La pasiva final se mantiene hasta el final de la jugada. No se permite encadenar mutaciones múltiples. Se copian efectos narrativos, mecánicos de la pasiva, los puntos de estadísticas que otorgue y habilidades. El cooldown de Transfiguración mutante es de 2 turnos propios, respetando además los tiempos de recarga originales de las pasivas utilizadas de sus habilidades.
+
+Camaleón x Monstruo
+
+La adaptación absoluta del camaleón y la creatividad indomable del monstruo dejan de coexistir por separado y se funden en un mismo pulso. En este estado, tu fútbol rompe sus propias ataduras: ya no copias para imitar, copias para reinterpretar. La metavisión camaleónica absorbe la estructura del movimiento, mientras la imaginación del niño monstruo la distorsiona, la libera y la ejecuta sin obedecer patrones fijos. Al activar esta habilidad, puedes seleccionar cualquier habilidad de regate o pase proveniente de una pasiva almacenada mediante Mutación: Camaleón, incluso si su origen pertenece a estilos centrados en físico o velocidad. La clave no está en apropiarte de su potencia, sino de su gesto, su mecánica y su intención. No replicas estadísticas ni atributos brutos: copias el movimiento y lo expresas bajo tu propio lenguaje creativo, transformándolo en una acción fluida, impredecible y personal. Para ejecutar esta habilidad debes declarar explícitamente la fórmula: Camaleón x Monstruo: [Nombre de la pasiva]. Desde ese instante, la habilidad elegida se manifiesta bajo un enfoque libre, sin rigidez ni repetición, como si el movimiento hubiese nacido en ti desde el principio. Esta capacidad no busca estabilidad, sino sorpresa. Cada uso representa una ruptura del guión esperado, una mutación momentánea donde el análisis se somete al instinto y la adaptación se convierte en arte. Tras utilizarla, deberás esperar 3 turnos propios antes de volver a activar Camaleón x Monstruo, respetando así el equilibrio entre mutación y control.
+Sinergia de Sora.</p></div>
+
+    <div class="slide">
+      <h2>Obsesión destructiva x Aceleración divina</h2>
+      <p>Sinergia entre pasivas de Rin Itoshi x Julian Loki (Primera División x New Gen Eleven)
+
+Cuando la obsesión por destruir se fusiona con la velocidad que roza lo divino, el resultado no es un jugador común, es un fenómeno imposible de contener. La voluntad devoradora y la aceleración absoluta de un dios nórdico. Uno existe para arrasar el orden establecido; el otro, para trascenderlo antes de que pueda reaccionar. Juntos, convierten el campo en un espacio donde el tiempo y la lógica se quiebran. Tu mente opera en un estado de persecución perpetua. No juegas para crear belleza ni para sostener una idea colectiva: juegas para alcanzar, romper y superar. Cada movimiento es una cacería. Cada decisión, una sentencia. Tu lectura del campo se acelera al ritmo de tu cuerpo, permitiéndote procesar trayectorias, posiciones y errores en el mismo instante en que ocurren. No reaccionas simplemente, llegas antes que cualquiera. Esa convergencia entre análisis destructivo y explosión cinética se traduce en un +20% en Tiro, donde cada remate se ejecuta con una violencia precisa, y un +17% en Regate, reflejo de un control feroz que se impone incluso a defensores que creen haber leído tu intención. Tu físico no es solo resistencia, es un arma en movimiento constante. La aceleración se incrusta en tu obsesión destructiva, otorgándote un +18% en Físico y Velocidad, convirtiendo cada arranque en una ruptura directa del ritmo rival. No corres para escapar, corres para aplastar distancias y forzar errores. En ese mismo estado, tu presión sin balón y tu capacidad de cerrar espacios crecen de forma antinatural, otorgándote un +14% en Defensa, no por vocación defensiva, sino porque tu presencia misma niega las opciones del rival. Incluso en el caos, existe una mínima concesión a la conexión colectiva. Tu pase no es elegante ni ornamental, pero es certero, directo y oportunista, ganando un +8% en Pase que representa la capacidad de soltar el balón justo antes de que el colapso ocurra. No construyes para otros: usas a otros como extensiones momentáneas de tu propio avance. Este estilo encarna a un depredador que piensa y se mueve más rápido de lo que el partido puede soportar. No hay refugio, no hay pausa, no hay adaptación suficiente. Frente a esta unión, los rivales son humillados por tu talento desbordante. Este estilo de juego irracional unido a una movilidad casi inhumana hace que seas impredecible a cualquier metavisión a excepción de Sae Itoshi o equivalentes al mismo (no incluye a Michael Kaiser o Isagi Yoichi) siendo manera de jugar fuera de su lógica.
+
+Restricción de lo divino
+
+No solo te basta con superar a tu adversario sino que te encargas de abrumarlo con un marcaje que a través de tu potencia corporal y velocidad fuera de este mundo no lo dejas jugar con libertad. Esta habilidad representa dos módulos diferentes.
+
+Módulo I
+
+A partir de un marcaje personal que arruina a tu perseguido porque no existe manera de despegarse de ti. Si busca romper el marcaje tiene que hacer un duelo forzado de Físico vs Físico para, si se fuga milagrosamente, no te demoras en alcanzarlo en Velocidad vs Velocidad reduciendo en sus estadísticas un -30% en ambas ruletas respectivamente (-15% si tiene especialidad física en la ruleta se reduce pero no en velocidad, si es especialidad de velocidad se aplica lo mismo y si viene de ambas especialidades se rebaja en ambas ruletas ese -15%).
+
+Módulo II
+
+Tu desmarque agresivo y explosivo es imposible que haya alguien que retenga la satisfacción de un depredador egoísta consumido por tantos impulsos en tu interior. Puedes romper un marcaje haciendo que su físico se reduzca un -30% en Físico vs Físico y su velocidad por alcanzarte aplica lo mismo no siendo alguien fácil de atrapar (-15% si tiene especialidad física en la ruleta se reduce pero no en velocidad, si es especialidad de velocidad se aplica lo mismo y si viene de ambas especialidades se rebaja en ambas ruletas ese -15%).
+
+Ejecución:
+
+Para su activación es necesario que se especifique el módulo que usará para destruir mentalmente en un marcaje o zafarse de un defensor en compañía del nombre. Al usar la habilidad, entra en 7 turnos globales.
+
+Impulso devorador
+
+¿Obstáculos? No hay nadie que iguale tu velocidad menos tus tiros letales con una curvatura extrema que alcanza unas velocidades que el ojo común no alcanza a leer. Puedes realizar un tiro potente aún si te andan haciendo carga física pateando desde una posición incómoda aumentando un +12 tu Tiro, no tienes reducción por remate a partir de estar en el campo rival y reduces un -28% la Velocidad/Defensa de tu enemigo. Si no tiene metavisión es forzado a Velocidad y después Defensa (si pierdes) la ruleta reduciendo un -35% por anticipar demasiado tarde. El portero sufrirá un -10% en su ruleta de gol correspondiente.
+
+Ejecución:
+
+Para ejecutar esta habilidad debes redactar la ejecución de tu tiro en la redacción y hacer un hipotético si te busca interrumpir en enfrentamiento físico para evitar que te derrumbe en medio del remate también hacer mención del nombre. Al usarlo, debes esperar 8 turnos globales.
+Sinergia de Coral.</p>
+    </div>
+    <div class="slide">
+      <h2>Corona de mil rostros</h2>
+      <p>Sinergia entre Reo Mikage y Michael Kaiser (Primera División × New Gen Eleven)
+
+La unión del Meta Visión × Camaleón a Máxima Mutación con el Despertar de un Nuevo Emperador crea un estilo que no solo controla el ritmo del partido, sino que lo impone con total firmeza. La visión amplia permite reconocer espacios y anticipar jugadas antes de que el rival siquiera actúe. La adaptación camaleónica, llevada al límite, absorbe y perfecciona la fuerza, la velocidad y la técnica de los demás, usándolos como piezas dentro de su propio juego. Cada decisión es clara: el cuerpo responde con precisión, la mente dirige con calma y la técnica se ajusta en el momento exacto para mantener el control de la jugada. No se trata de copiar sin sentido, sino de aprender y moldear cada detalle hasta hacerlo propio (capacidad para adaptar cualquier disparo). El resultado es un jugador capaz de marcar de cualquier forma: con un disparo demoledor, un cambio de ritmo inesperado o un regate que abre espacios. Incluso al usar cualidades físicas o de velocidad ajenas, siempre mantiene su estilo intacto. Solo las habilidades de Isagi Yoichi permanecen fuera de su alcance. Su disparo se fortalece con cada acción, su regate protege la posesión bajo presión, su físico resiste choques constantes y su velocidad le permite aparecer justo en el momento clave. Nada en su juego es casualidad: cada movimiento tiene un propósito y conecta con el siguiente, obligando a la defensa rival a estar siempre en alerta. Esta sinergia otorga bonificaciones de +20% en Tiro, +18% en Físico, +16% en Velocidad, Pase y Defensa y +15% en Regate, prueba de un poder que no necesita adornos para imponerse, porque su eficacia es suficiente para dominar. Tu capacidad física es de un fútbol de elite, tus músculos no están hechos únicamente para aguantarte, si no para ser un arma exponencial dentro del campo, el cuerpo de un monarca combinado con un entrenamiento estricto para perfeccionar todo de tí, dando como resultado un potenciador en tus copias, consiguiendo poder copiar pasivas físicas con libertad total, producto de tu arduo trabajo.
+
+Marea de Caos
+
+No eres un jugador común. Tu dominio sobre el campo te separa de todos los demás. No esperas a que el juego se ajuste a ti: eres tú quien lo cambia a tu favor. Tu cuerpo reacciona de inmediato y transforma un duelo que parecía seguro en un vacío para el rival. Esta habilidad permite a Michelle asimilar una habilidad extra de una pasiva distinta a la copiada con [Mutación: Camaleón × Pasiva]. Esa habilidad copiada no tendrá cooldown al usarse, pero a cambio Marea de Caos entrará en cooldown de 3 turnos propios. Es el precio por doblar el juego a tu voluntad.
+
+Tiro del Dictamen Final
+
+Tu disparo es un arma letal, capaz de romper toda ley de la física y lógica, la potencia del emperador junto a la curva de las copias de los hermanos Itoshi. Este tiro no sigue una trayectoria normal, toma una curva mas allá de lo fantástico, sumandote así +15% de Tiro durante esta jugada, además de eso, si alguien usa una habilidad anulativa contra este tiro, inmediatamente se bate a un duelo 50/50, haciedo que este tiro sea inanulable de primeras. Si alguien intenta frenar este disparo debe someterse a una ruleta obligatoria de Tiro vs Velocidad junto a una reducción de -30 puntos en su estadística (-15 si la sinergia es un New Gen XI y una pasiva de defensa), prueba de lo impredecible que es tu disparo, y si logra vencer, se va a ruleta de Tiro vs Defensa en donde sufrirá el mismo castigo en su estadística defensiva. Si el disparo logra conectar al arco, resta -12 a cada porcentaje de la ruleta (portero, palo y fuera). Para ejecutar esta habilidad debes hacer mención explícita a [Tiro del Dictamen Final] antes de disparar, tras su uso, cae en un cooldown de 4 turnos propios.
+Sinergia de Michelle</p>
+    </div>
+    <div class="slide">
+      <h2>CARNAVAL DEL CAOS CREATIVO</h2>
+      <p>Sinergia Primera División x New Gen XI: Bachira Meguru x Bunny Iglesias
+
+La combinación perfecta la zamba con el carnaval, tu juego se convirtió en un desfile de puro baile ya no te guías por la lógica solo te dejas llevar por tu imaginación y por buscar los mejores escenarios para brillar tu estilo se guía por el regate tu mejor arma capaz de superar las defensas más impenetrables con solo hipnotizarlos con tus movimientos gracias a esta combinación monstruosa obtienes +20% en regate siendo una pesadilla al momento de jugar, no solo eso tu juego de piernas mejor de forma que te volviste ambidiestro total sin tener reducción alguna al sobre la misma no importa con que piernas encares o dispares o pases no sabrán con cual provocando una confusión y a su ves miedo de forma mental, tus pases algo con el cual con la capacidad de un new gen y la capacidad de hacer pases el cual el rival no se los espera guiados por la misma imaginación y timing perfecto siendo capaz si tu quieres dejar solo a tus propios compañeros para que hagan gol, gracias a esa mejora tienes un +15% en pase, tus tiros una mejora brutal como jugador delantero de España con la mejora del niño monstruo el cual mejoro durante la nel no saben ni cuando puedas patear incluso desde que ángulo no importa lo incómodo cerrado o como te encuentres eres capaz de convertir goles de forma atrocita siendo un miedo para los arqueros incluso para los defensores el cual ni siquiera sabrán donde vendrá el tiro o incluso con cual pierna vas a patear teniendo una mejora de +17%, tu velocidad no se queda atrás pues necesitas una velocidad excepcional para tus regates tanto para los movimientos para cuando haya carrera teniendo incluso cambios de velocidad como si fueras un auto teniendo un +15% en velocidad, tu defensa cuando se la requiere apareces salvando a último momento cortando pases que solo tu imaginas que puedan dar guiandote y apostando por esas ejecuciones y creando automáticamente contras rápidas teniendo +12% en defensa, tu físico recompensado por un new gen pero contraído por un joven flaquito el cual mucho físico no presenta pues no es algo que afecte tanto ya que presentas una buena resistencia para combinar regates y carreras incluso saltos muy altos y únicos teniendo como recompensa un +8% en físico. Como extra tus movimientos, intenciones y demás te vuelves totalmente impredecible a todo tipo de metavisión incluso a la perfeccionada (Sae) volviéndote un jugador regateador total llevando baile y diversión por donde vayas.
+
+Duelo Maestro
+
+Un enfrentamiento en el cual, al encarar a un rival, imponés un radio circular invisible que se activa en el instante en que alguien se te interpone, forzando a ambos a entrar en una secuencia de movimientos entrelazados, precisos y sincronizados, como un baile de pareja guiado por un mismo ritmo dominante; no importa quién se cruce en tu camino, sus desplazamientos quedan inevitablemente ligados a los tuyos, hipnotizado, arrastrado por tu tempo como una víbora siguiendo el sonido de una flauta. En ese punto exacto, cuando el rival intenta arrebatarte el balón, ejecutás un gesto imprevisto: arrastrás la pelota por detrás mientras tu cuerpo se inclina en diagonal, quebrando la lectura defensiva y provocando que, en su segundo intento desesperado por robarte el balón, este se abra paso justo entre sus piernas, tal y como lo planeaste desde el inicio, concretando un caño limpio y humillante con el que salís de su marcaje y lo dejás mirando al suelo, evidenciando que algo dentro suyo se rompió por la exposición y la humillación. Cualquier otro jugador que intente intervenir en ese lapso será automáticamente absorbido por esta canasta de baile, viéndose obligado a enfrentarte bajo las mismas reglas del duelo, y en el caso de oponentes que posean habilidades anulativas —yo, michael o cualquier otra de naturaleza similar— el enfrentamiento se resolverá mediante una ruleta de 50/50, elevándote momentáneamente a un estado casi intocable. Esta habilidad solo puede activarse al momento de redactar con precisión tus movimientos y especificar de qué manera ejecutás el caño, y una vez finalizada entra en un cooldown obligatorio de 4 turnos propios.
+
+Desfile del Carnaval
+
+Provocás un juego colectivo total en el que utilizás a tus compañeros como extensiones naturales de tu propia creatividad, abriéndote paso tanto mediante regates como a través de sus cualidades individuales, haciendo que el juego de todos se transforme en una auténtica cortina de distracción guiada por tus pensamientos y movimientos; sos vos quien decide en cada instante si continuar la jugada mediante pases o romperla con un regate cuando un rival intenta cruzarse, generando una confusión constante en la defensa enemiga, incapaz de distinguir si la amenaza proviene del pase o de tu conducción. Cuando recibís el balón tras un pase y un rival intenta arrebatártelo, tus instintos aceptan el desafío y forzás un enfrentamiento directo de regate contra defensa, en el cual el oponente sufre una reducción del -25% en su defensa, mientras que tu regate obtiene un aumento inmediato de +5 en Regate; al superar exitosamente al rival, tus estadísticas aumentan +10 en Pase, Regate y Velocidad, efecto que solo puede activarse una única vez por uso de la habilidad. Podés encadenar enfrentamientos contra hasta 3 rivales distintos, pero sin acumulación de bonificaciones, manteniéndose únicamente el aumento obtenido en el primer duelo superado. Al llegar a zona de definición, el desfile debe culminar obligatoriamente con un disparo tuyo, cerrando la jugada con tu propio gol y firmando la acción como el protagonista absoluto del carnaval provocando que cualquiera que intente interponerse en el tiro se comerá el primer amague para después arrastrarlo y de forma encadenada disparar al arco, si un segundo se interpone en el disparo sufrirá las reducciones de un -30% de defensa y a su vez el arquero sufrirá un -12% provocando un gol perfecto, llevándote toda la gloria del espectáculo.
+
+Para activar la habilidad
+
+Para activar esta habilidad debés mencionar explícitamente DESFILE DEL CARNAVAL mientras describís cómo tus compañeros se sincronizan con tu ritmo, siguiendo tus decisiones y movimientos como si compartieran tu misma mente; la secuencia debe finalizar obligatoriamente en un gol convertido por vos, de lo contrario la habilidad quedará sellada durante todo el partido. Al activarse, las habilidades Drible de Ginga x Monstruo y Elastic Driver entran automáticamente en sus respectivos cooldowns, a su vez que si alguien interrumpe al final y usas el amague Abyss Shot: Módulo II entrará en cooldown, y la manipulación colectiva de tus compañeros no posee límite de distancia, ya que durante esta jugada la cancha entera se convierte en tu escenario. Si la habilidad la terminan anulando contra una habilidad anulativa como yo, michael o al momento de patear y lo tapan con una habilidad anulativa, la habilidad no será sellada y entrará en cooldown por 7 turnos globales junto a las habilidades del Ginga y Driver, a su vez igual que Abyss Shot.
+Sinergia de Jona.</p>
+    </div>
+        <div class="slide">
+          <h2>Orden Perfecto</h2>
+          <p>Sinergia entre pasivas de Isagi Yoichi x Sae Itoshi (Primera División x New Gen Eleven)
+
+Eres la síntesis perfecta entre la frialdad analítica del estratega y la audacia técnica del prodigio. Tu cabeza trabaja como un motor incansable: procesa el campo en su totalidad, reorganiza posibilidades y convierte cada dato en una acción prioritaria. No naciste siendo el mejor, pero te negaste a quedarte atrás; vendiste tu calma por una lucidez que diseña jugadas y remates como si fueran piezas de un rompecabezas. Esa fusión te otorga ahora un dominio completo sobre la construcción, la ruptura y la finalización de las jugadas. Tu metavisión se manifiesta en dos caras complementarias: una visión omnisciente que descompone el juego en trayectorias y tiempos, y una conciencia creadora que no solo ve al jugador libre, sino que fabrica el espacio para que nazca. Tu condición de Genio de la adaptabilidad se vio mejorada por completo, el período necesario para adaptar y asimilar pasivas ajenas se reduce: el tiempo de adaptación propio de Isagi pasa de 6 turnos a 4 turnos (y 3 turnos si no hay New Gen Eleven en el equipo rival). Además, tienes mayor alcance de adaptación: ahora puedes adaptar pasivas de rango New Gen Eleven a tu repertorio de Genio de la adaptabilidad —salvo las pasivas exclusivas de Loki y Hugo, que permanecen fuera de tu alcance—. Esa evolución te concedió un dominio absoluto sobre todas las fases del juego. Construyes cada jugada desde la base con una claridad absoluta en el pase, potenciando esta faceta en +18%, no como un simple recurso de conexión, sino como una herramienta de control total. Cada entrega dicta el tempo del partido, obliga al rival a reajustarse y lo empuja a jugar bajo tus reglas. El balón no circula al azar: cada pase contiene una intención táctica que abre líneas invisibles, descompone estructuras defensivas y reordena el movimiento colectivo a tu favor, como piezas de un sistema que solo tú comprendes. En la ruptura, tu entendimiento del espacio y del lenguaje corporal rival se traduce en un +17% en Regate. No regateas por espectáculo, sino por necesidad estratégica. Superas marcas porque detectas el instante exacto en que la defensa se desequilibra. Cada finta es consecuencia de una lectura previa, cada cambio de ritmo responde a una debilidad ya identificada. No improvisas: ejecutas decisiones calculadas con precisión quirúrgica. Cuando llega el momento de finalizar, tu dominio del flujo del juego se manifiesta en un +18% en Tiro. No disparas por impulso; eliges el segundo exacto, el ángulo óptimo y la técnica adecuada para cerrar la jugada. Tus remates son la conclusión natural de una secuencia pensada desde antes de recibir el balón, castigando errores mínimos en la organización rival y convirtiendo cualquier fallo estructural en una sentencia inmediata. En defensa, tu conciencia espacial y capacidad de anticipación elevan tu Defensa en +17%. No persigues al oponente: lo guías hacia zonas muertas. Cortas líneas de pase antes de que existan y ocupas espacios clave con una colocación precisa que reduce las opciones rivales sin recurrir a la fuerza, imponiendo control mediante lectura y posicionamiento. Tu Velocidad, incrementada en +16%, no se basa en explosividad caótica, sino en timing absoluto. Te desplazas antes de que la jugada se materialice, llegando siempre al punto exacto donde debes intervenir, apoyar o cerrar espacios. Cada movimiento es la consecuencia directa de una predicción acertada del desarrollo del juego. El Físico, reforzado también en +16%, actúa como el pilar silencioso de todo tu estilo. No es una potencia bruta, sino un equilibrio funcional que te permite resistir contactos, mantener estabilidad bajo presión y ejecutar con precisión incluso en escenarios adversos, sosteniendo el peso de una mente que nunca deja de calcular. Al final, este estilo proviene de una promesa cumplida: el talento pulido por la disciplina se convierte en método, y el método en victoria. Juegas para reescribir el rumbo del partido; cuando te adaptas por completo sientes que eres único que decide el resultado del partido.
+
+Análisis ideal del creador
+
+Eres un excepcional creador letal dentro de la cancha siendo único como ningún otro tanto para efectuar disparos en búsqueda de propio gol como dar la oportunidad a tus compañeros de anotar gol. Tienes la opción de hacer un pase o un tiro independientemente de lo que busques y de lo requiera la ocasión.
+
+Módulo I:
+
+Tu estilo como creador de juego acompañado de tu mente calculadora a través de un eficaz sistema operativo de obtención de información constante de la Metavisión Perfeccionada permite realizar un tiro que pueda ser ejecutado desde cualquier dirección a partir de 16 m o en esquinas con ángulos cerrados. Gracias a tu habilidad de un jugador de élite tienes un disparo que cancela el efecto anulatorio, enviando esto a duelos 50/50 (en caso de que se use una habilidad de anulación directa) y no solo eso, ignoras el efecto de reducción (solo te afecta reducción si la sinergia se enfoca de lleno en la defensa), y cualquier defensor que se entrometa recibe una reducción de -28% forzando Tiro vs Defensa. El portero sufrirá una reducción a -12 en la estadística de ruleta de gol.
+
+Módulo II:
+
+Eres un hábil con una visión perfeccionada del juego encontrando la mejor ocasión al gol con tu sentido del gol aprovechando de manera única los espacios y posiciones de tus compañeros. Anticipas acciones de compañeros y enemigos donde se moverán encuentras la oportunidad de enviar un pase ideal que rompe defensas a ser un pase curvo impredecible que es justamente lo que necesita tu compañero. Sacando rendimiento al máximo de tu compañero recibe un +15% en la estadística de Tiro en su jugada, y cancela el efecto anulatorio de los interceptores, enviando a duelos 50/50 (en caso de usar una habilidad de anulación directa) y no solo eso, ignoras el efecto de reducción (solo te afecta reducción si la sinergia se enfoca de lleno en la defensa), y cualquier defensor que se entrometa recibe una reducción de -28% forzando Pase vs Defensa. El alcance de tu pase llega a 25 m de distancia alrededor y si se pasa pierde los efectos de la habilidad.
+
+Ejecución
+
+Para hacer uso de esta habilidad, se deberá hacer mención a Análisis ideal del creador: Módulo X dependiendo de la situación en la que vayas a usarlo, tras esto, la habilidad cae en un cooldown de 3 turnos propios antes de poder volver a usarse.
+
+La lógica de la elegancia
+
+Tu juego de piernas es envidiable como ningún otro jugador bendecido con una visión que permite encontrar los puntos sensibles en las defensas rivales sin que logren percatan de tu siguiente movimiento con lo impredecible que resultas ser. A través de un estilo elegante acompañado de toques ágiles y letales puedes enfrentar a 3 rivales a la vez forzando duelos individuales con reducción de -10% pero esto tiene su truco, a cada rival que dejas atrás obtienes un bonus de +5 en Regate, y aumenta la reducción a -10% (hasta llegar a -30%, es decir a los 3 rivales). Tienes una mecánica oculta, si un rival de los 3 te aplica una habilidad de anulación, entras en un duelo de 50/50, y si lo logras superas, reduces un -12% su defensa hasta 2 turnos propios.
+
+Ejecución
+
+Para ejecutar esta habilidad, se debe hacer mención a La lógica de la elegancia, y mencionar de forma explícita el como realizas cada regate para poder hacerla efectiva, tras esto, cae en un cooldown de 8 turnos globales.
+Sinergia de Ren.</p>
+        </div>
+            <div class="slide">
+              <h2>Orden Corrompido</h2>
+              <p>Sinergia entre Charles Chevalier y Hugo (Primera División × New Gen Eleven)
+
+Un creador del juego nacido de la contradicción. La unión entre un pequeño diablo y creyente del destino no representa equilibrio, sino una fusión antinatural entre lógica absoluta e irracionalidad pura. Tu fútbol se construye sobre decisiones que nadie logra anticipar, ni siquiera aquellos que creen comprender el destino. Eres un creyente del caos con método, un estratega que alterna entre jugadas milimétricamente calculadas y explosiones improvisadas que quiebran cualquier estructura rival. Puedes convertirte en el corazón de tu equipo, el eje que ordena cada movimiento… o en un virus que infecta el sistema defensivo contrario. Los rivales no fallan por falta de talento, fallan porque no logran entenderte. Incluso usuarios de metavisión refinada quedan atrapados en tu ritmo cambiante, y aquellos con metavisión perfeccionada —con la excepción de Sae Itoshi— se ven obligados a adaptarse a ti si quieren sobrevivir al partido. No eres una pieza dentro del sistema: el sistema gira alrededor de tu presencia. Tu ambidestreza es total. Ambos pies responden con la misma precisión, anulando cualquier tipo de reducción al ejecutar pases, controles o acciones decisivas sin importar la pierna utilizada. Cada gesto, cada postura, cada contacto con el balón es distinto al anterior. No repites patrones. No dejas pistas. Para tus compañeros, eres la guía; para tus enemigos, el jefe final que deben descifrar antes de que sea demasiado tarde. Tu visión del juego potencia tus pases en un +20% desde el inicio, enviando balones que chocan entre lo racional y lo ilógico. Las trayectorias se doblan, flotan o se rompen en ángulos que desafían la lectura defensiva. Solo quienes entienden tu fútbol pueden seguir el hilo de tus intenciones. Rompes líneas no solo con pases, sino con tu presencia misma. La elegancia con la que manejas el esférico refleja una creatividad refinada y una técnica dominante, permitiéndote superar marcas sin depender exclusivamente del pase, otorgándote un +18% en Regate. No aceleras por instinto, aceleras por convicción anticipada. En zona defensiva, cada balón que cruza tu radio de acción se convierte en una oportunidad: anticipas movimientos, cortas líneas de pase y te posicionas con precisión quirúrgica, incluso sacrificando tu cuerpo si es necesario para frenar un disparo. Esta lectura superior se traduce en un +16% en Defensa y Velocidad, no por explosión física, sino por ventaja mental. Como reflejo final, emerge la cualidad más peligrosa de un New Gen Eleven: potencia usada con inteligencia. No posees un físico descomunal, pero sí uno optimizado, funcional y letal cuando se combina con tu cerebro, otorgándote un +8% en Físico. No necesitas imponerte por fuerza bruta. Te impones porque llegas antes, piensas mejor y ejecutas cuando nadie más lo haría.
+
+Sistema de creación dual avanzada
+
+Eres un creador total dentro del campo, capaz de decidir el destino de la jugada sin depender de un único enfoque. Tu lectura te permite optar entre imponer el caos o cerrar la jugada con control absoluto.
+
+Módulo I: Veredicto Imprevisible
+
+Aprovechando tu imaginación revoltosa, ejecutas un pase que rompe la predicción rival. Este movimiento cancela bonificaciones de anticipación (excepto la metavision avanzada de Sae) y envía cualquier intento de anulación directa a duelos 50/50. Ignoras reducciones que no estén enfocadas exclusivamente en defensa especializada, y cualquier rival que interfiera recibe una reducción de -25% en Defensa o Velocidad. Si el balón es interceptado, queda suelto debido a no ser la ruta esperada.
+
+Módulo II: Resolución Inevitable
+
+Tras desordenar el campo, aplicas tu lectura analítica y físico refinado para cerrar la jugada. El pase o acción ejecutada no puede aplicar su jugada forzando una reducción del -25% forzando ruleta de Físico vs Físico. Tu físico aumenta +13% durante toda la jugada.
+
+Ejecución:
+
+Para usar esta habilidad, se debe hacer mención a Sistema de creación dual avanzada: Módulo I o II según la situación. Tras su activación, entra en un cooldown de 7 turnos globales.
+
+Lógica caótica de la elegancia
+
+Tu manejo del balón fusiona técnica refinada con decisiones impredecibles. Puedes enfrentar hasta 3 rivales consecutivos forzando duelos individuales con reducción inicial de -10%. Por cada rival superado, obtienes +5 en Regate y aumentas la reducción en -10% (hasta un máximo de -30%). Si alguno de los rivales utiliza una habilidad de anulación directa, el enfrentamiento se convierte en un duelo 50/50. Si lo superas, reduces -12% su Defensa durante 2 turnos propios.
+
+Ejecución
+
+Se debe hacer mención explícita a Lógica caótica de la elegancia y describir cada regate. Tras su uso, entra en cooldown de 8 turnos globales.
+Sinergia de Sora.</p>
+            </div>
+                <div class="slide">
+                  <h2>Jurisdicción del Cadáver Viviente</h2>
+                  <p>Sinergia entre Oliver Aiku NEL × el Estilo Defensivo del Devorador de As (Primera división × New Gen Eleven)
+
+Cuando la vigilancia absoluta del oficial que patrulla cada ángulo del campo se une con la presencia antinatural del no-muerto que devora ofensivas, el fútbol deja de ser un espectáculo: se convierte en un interrogatorio sin escapatoria. Uno observa, delimita y encierra. El otro aparece, oprime y ejecuta. El resultado es una defensa que no reacciona al ataque, sino que lo criminaliza desde su nacimiento y la ofensiva rival no encuentra espacios: cada pase pierde intención, cada regate se vuelve torpe y cada disparo nace condenado a su propio fallo.
+
+Esta sinergia busca el dominio total del territorio. Dentro de su radio de acción, el juego se ralentiza, las decisiones se vuelven predecibles y el ataque enemigo pierde identidad. No hay caos ni improvisación, solo orden impuesto por la fuerza y la lectura perfecta. En esta jurisdicción, el delito ofensivo no se castiga con una falta, se castiga con la desaparición de la jugada.
+
+Esta sinergia otorga un +20% en Defensa, +18 % en Físico y Velocidad, y un +12 % en pase.
+
+Zona de Arresto Total
+
+La sinergia hace que el campo se transforma en una zona donde cada movimiento rival ha sido catalogado como amenaza potencial. El ataque enemigo deja de fluir con libertad y comienza a responder, de forma inconsciente, a un orden impuesto desde la defensa. El rival siente que cualquier decisión que tome ya fue prevista, y esa duda es suficiente para quebrar la jugada.
+
+Esta habilidad permite anticipar y condicionar una acción rival (Tiro, Pase o Regate).
+
+El rival ve reducida su estadística usada en –20 % durante la acción.
+
+Si intenta forzar un segundo recurso dentro de la misma jugada, se aplica una reducción adicional del –10 %, representando el colapso mental provocado por la presión conjunta.
+
+Si la acción es detenida, el balón queda suelto en una zona controlada, favoreciendo la reorganización defensiva o el inicio de una transición. Se hace una ruleta para saber dónde quedó el balón suelto (25% izquierda, derecha, centro y 10% afuera).
+
+Cooldown: 6 turnos globales.
+
+Dominio del Último Territorio
+
+Esta habilidad representa el estado máximo de sincronía absoluta entre dos pasivas defensivas. Cuando haces esta habilidad la jugada rival es absorbida por completo dentro de su campo de influencia. No importa la intención, la velocidad o la potencia: todo ataque termina cayendo en el mismo punto, donde la voluntad del atacante se rompe.
+
+La habilidad se adapta según la acción rival, funcionando en dos módulos:
+
+Módulo 1: Si el rival intenta regatear o avanzar con balón. Se fuerza un duelo directo, reduciendo la estadística rival en –15 %. Si el duelo es ganado, se recupera o rechaza el balón de forma inmediata.
+
+Módulo 2: Si el rival intenta pase clave o disparo, la lectura previa permite interceptar o bloquear la acción antes de que se ejecute por completo, aplicando una reducción del –25 % a la estadística usada.
+
+Cooldown: 8 turnos globales.
+Sinergia de July</p>
+                </div>
+                                <div class="slide">
+                                  <h2>Técnica Futbolística de Destrucción Analítica del Genio Itoshi</h2>
+                                  <p>Sinergia entre las pasivas de Itoshi Rin y Sae Itoshi (Primera División x New Gen Eleven)
+
+La unión de los hermanos Itoshi en un solo individuo ya no es un sueño, sino una realidad. Tu estilo futbolístico representa una bestia que consiguió disciplinar sus pensamientos mundanos bajo meditación y experiencia de un portador del título New Gen XI. Eres un creador del juego por excelencia que tiene una habilidad futbolística superior que te permite procesar rápidamente grandes cantidades de información del campo (visión central y periférica) para predecir el juego y tomar decisiones óptimas, otorgando una percepción casi omnipotente del terreno de juego y sus movimientos siendo clave de tu desarrollo sin olvidar de tu ojo de depredador que se enfoca intensamente en el portero rival en duelos uno a uno, analizando su lenguaje corporal y vacilaciones para que encuentres los momentos perfectos y ángulos precisos para disparar en la búsqueda de tus goles propios. Tus movimientos pueden resultar pura lógica o de actuar irracionales haciéndote completamente impredecible, siquiera usuarios de metavisión refinada o perfeccionada son capaces de predecir tu juego, no saber qué jugadas están fluyendo por tu cabeza. Te volviste ambidiestro completo pudiendo ejecutar tiros y pases con ambas piernas sin reducciones, tu manejo con el esférico en los pies es admirable y temible para tus adversarios. Tu estilo de regate se basa en habilidad de técnica extrema, cálculo predictivo y una mentalidad dominante que enfoca control pasivo a su vez de una anticipación matemática pudiendo realizar movimientos directos y explosivos inesperados que puedes sobrepasar a múltiples defensores subiendo 18% tu Regate. La manera que disparas se caracterizan por una precisión increíble, utilizando efectos y ángulos inesperados para sorprender a los que se atrevan a interponerse en tu camino, un control magistral y crear ángulos imposibles como tiros a 180° grados o curvas inversas que se combinan una ambición de un delantero por la búsqueda del gol mediante tus tiros letales desde cualquier posición que esté disponible a tirar sumando un +20% en Tiro. Una de tus mayores armas es la potencia física sumado a tu increíble cerebro que tienes sabiendo donde hacer enfrentamientos físicos en retener el balón o hacerte con la posesión sumando tu experiencia a manipular el centro de gravedad de quiénes se interponen en tu avance o desequilibrar a oponentes en tu Físico 17%. Tu papel de un magistral en la ofensiva en asistencias, un digno creador de juego con pases precisos, visión y control para habilitar a tus compañeros con pases de difíciles trayectorias de predecir a tus adversarios por todo tipo de efectos que puedes añadir a tus pases otorgando un +16% en Pase. Tu desplazamiento se manifiesta en una explosión táctica y ejecución técnica impecable para posicionarse adecuadamente mediante anticiparte con tu visión del juego tanto en ofensiva o defensiva para moverte por el terreno obteniendo +16% en Velocidad. Ser defensor no es tu rol principal sin embargo haces presión coordinada, el robo de balones y el contraataque rápido utilizando tus ojos para analizar los movimientos de la ofensiva rival y la potencia física que presiona alto para hacerse con el balón con un 16% en tu Defensa. Estás al nivel de la nueva generación mundial con el potencial suficiente para alzar la cima volviendo irreducible tus estadísticas a no ser que te enfrenten con sus mayores especialidades y solo pueden igualarte si te encara con sus mejores ventajas por tu evolución sin límites.
+
+Movimientos especiales de Sinergia
+
+Hermosa Destrucción
+
+Antes de la creación viene la destrucción y tú eres consciente de eso. Al momento que tu adversario quiera ganarte en un enfrentamiento que dispongas del balón, si entra en un rango máximo de 1-4 m de distancia entre ambos no dejas un momento de actuar, destruyes sin que se entere que lo superaste en el enfrentamiento sin dejar que intervenga de nuevo contra ti. Aplica también manipulación en manos de sus propios compañeros. Esta habilidad representa tu nivel en contra de adversarios inferiores de tu título de nueva generación. La habilidad es un contraataque perfecto que sirve contra habilidades de duelo forzado de Defensa/Físico que anulas al instante evitando el duelo. Si enfrentas habilidades de anulación defensiva/físicas también lo evitas, a excepción si la habilidad proviene de una pasiva de rareza New Gen Eleven que entra en un duelo 50/50 (si viene de Don Lorenzo ejemplo) por la igualdad de condiciones existente entre ambos, en caso de otro New Gen Eleven en la rareza pero no defensivo proviene un duelo común donde aplicas una reducción de -16% en su Defensa haciendo una ruleta de Regate vs Defensa (incluso si aplica una habilidad de anulación, pero no evitas la reducción que te imponga si viene de reducir tu Regate en la ruleta). Tu habilidad incrementa +10 en Tiro, Regate, Pase y Físico durante la jugada activa.
+
+Ejecución:
+
+Debes redactar el uso del movimiento de regate que aplicas para desequilibrar a tu adversarios de una manera destructora que demuestre ser mejor indiscutiblemente y hacer mención de la habilidad Hermosa destrucción. Entra en un cooldown de 7 turnos globales luego de usarla.
+
+Aniquilación Perfecta
+
+La manifestación de un egoísta consumido con el deseo convertirse el mejor jugador del mundo sin importarle quienes se interponen en sus metas. No te importa destruirte a ti mismo si es para conseguir la gloria y harás lo que estés a tu alcance para lograrlo. El rol principal de defender no está asignado para ti sin embargo no hay nada imposible que no puedas realizar y lo demuestras a la hora de recuperar el balón siendo un todoterreno.
+
+Módulo I
+
+Dentro de un rango de 4 metros de ti puedes enfrentarte a tu adversario incluso si viene aplicando una habilidad anulativa o duelo de Regate/Físico de Sinergia/Pasiva, si viene de Primera División a abajo de la rareza puedes forzar un duelo inmediato de Defensa vs Regate o Físico vs Físico según lo que venga la habilidad reduciendo un -25%. Si el enfrentamiento es contra una rareza New Gen Eleven la habilidad ya sea por pasivas/sinergia… Tú obligas a una ruleta de 60/40 aunque sean del mismo título de la nueva generación no conoces lo que es tener un límite establecido a evolucionar cuánto mayor sea el reto (50/50 si viene de su especialidad [Físico/Regate] teniendo que arrastrarte al mismo terreno para estar igualados) de ser una habilidad de forzar duelo ignoras la reducción (Excepción si viene de su especialidad pero te rebaja un 15% nada más reduciendo igualmente ese -25%).
+
+Módulo II
+
+¿Seguridad? Tú no conoces lo que es priorizar tu bienestar si puedes masacrar ese juego de niños que ves de tus adversarios. Sus tiros/pases que parecen inútiles ante ti puedes enfrentarlos sin un duelo previo de velocidad donde tu conciencia superior de la metavisión perfeccionada permite anticipar su jugada e interrumpir su habilidad sea anulativa o no de pasivas/sinergia. Si viene de Primera División a abajo de la rareza puedes forzar un duelo inmediato de Defensa vs Regate o Físico vs Físico según lo que venga la habilidad reduciendo un -25% al ser fáciles de manejar para ti, un nuevo juguete que destruyes. La cosa cambia si viene de la rareza New Gen Eleven la habilidad ya sea por pasivas/sinergia… Tú obligas a una ruleta de 60/40 aunque sean del mismo título de la nueva generación no conoces lo que es tener un límite establecido a evolucionar cuánto mayor sea el reto (50/50 si viene de su especialidad [Tiro/Pase] teniendo que arrastrarte al mismo terreno para estar igualados) de ser una habilidad de forzar duelo ignoras la reducción (Excepción si viene de su especialidad pero te rebaja un 15% nada más rebajando un -25%).
+
+Ejecución:
+
+Para efectuar la habilidad debes primero hacer mención que módulo usas y según la acción que requieres de utilizar con el uso del nombre Aniquilación Perfecta con el uso adecuado de la habilidad. Una vez lo usas entra en un cooldown de 3 turnos propios para volver a usarlo.
+Sinergia de Ren.</p>
+                                </div>
+                                                <div class="slide">
+                                                  <h2>Sincronía del Renacimiento</h2>
+                                                  <p>Sinergia entre Reo Mikage NEL y Rensuke Kunigami NEL (Primera División × Primera División)
+
+La convergencia entre la Mutación Camaleónica y el Físico Renacido da origen a una anomalía del fútbol moderno. No se trata de un simple híbrido, sino de una evolución prohibida nacida del “Wild Card”. Tu mente analiza el campo mediante metavisión, procesando trayectorias, espacios y decisiones en múltiples capas simultáneas, mientras tu cuerpo ejecuta esas conclusiones con una violencia física capaz de romper cualquier lectura defensiva. Cualquier pasiva física puede ser copiada, mutada y adaptada (excluyendo maestros) integrándose bajo una estructura muscular que no conoce límites. Tu estilo representa al creador de juego total llevado al extremo: la técnica no existe sin fuerza, y la fuerza no sirve sin comprensión del campo. Gracias a tu ambidestreza absoluta y capacidad camaleónica, integras estilos ajenos y los deformas hasta hacerlos propios, imponiendo respeto en cada sector del terreno.
+
+Tu regate combina precisión quirúrgica con potencia de choque, permitiéndote anular rivales incluso bajo presión constante. Tus disparos se convierten en una anomalía geométrica, capaces de generar curvas imposibles y potencia demoledora desde media y larga distancia. Sin embargo, tu arma definitiva es el físico: incluso antes del contacto, tu presencia abruma y garantiza superioridad estructural en cualquier duelo. Completando este dominio total, puedes desempeñarte como líbero defensivo, mediocampista dominante o delantero centro sin pérdida de rendimiento. Tu crecimiento no tiene techo; cada victoria fortalece tu control del partido hasta un punto que incluso los genios deben reconocer.
+
+Bonificaciones de la sinergia:
+
+Físico +17%
+Tiro +18%
+Regate +16%
+Defensa +16%
+Pase +16%
+Velocidad +12%
+
+Habilidades de Sinergia
+
+Impacto Clínico
+
+La fusión del instinto francotirador con un análisis absoluto. Cuando el camino al gol está bloqueado, no lo rodeas: lo fuerzas. Utilizando tu potencia, identificas el punto exacto de ruptura y ejecutas un disparo con el exterior del pie, imprimiendo una rotación violenta y antinatural que deforma la trayectoria. Si una habilidad anulativa intenta detener este disparo, se activa automáticamente un duelo 50/50, representando la colisión directa entre la anulación y tu potencia de golpeo. Además, cualquier defensor que intente interponerse será forzado a un duelo de Velocidad vs Tiro, aplicando una reducción de −20% a su Velocidad. Incluso si logra resistir, se activa de forma inevitable un duelo posterior de Tiro vs Defensa, demostrando que el disparo se superpone por fuerza bruta y ejecución.
+
+Ejecución:
+Para ejecutar esta habilidad debes hacer mención explícita a [Impacto Clínico] antes de disparar. Tras su uso, entra en cooldown de 7 turnos globales.
+
+Quiebre de Centro de Gravedad
+
+Cuando te encuentras a menos de 50 centímetros del rival, aplicas un leve toque físico con el hombro en el instante exacto, lo justo para romper su equilibrio sin necesidad de un choque completo. Este micro-contacto desplaza su centro de gravedad, obligándolo a un duelo de Físico vs fisico, donde su estructura queda expuesta. Durante este duelo, reduces el físico del rival en −30% (−15% si su especialidad es físico) ya que no puede apoyarse en técnica ni posicionamiento correcto. Si ganas el duelo, superas al defensor de forma limpia y continúas la jugada.
+
+Ejecución:
+Para usar esta habilidad debes hacer mención explícita a [Quiebre de Centro de Gravedad] y describir el contacto corporal. Tras su uso, entra en cooldown de 7 turnos globales.
+Sinergia de Alan.</p>
+                                                </div>
+
+  </div>
+</div>
+
+<div class="controls">
+  <button onclick="prevSlide()">❮</button>
+  <button onclick="nextSlide()">❯</button>
+</div>
+
+
+<footer>© July — Proyecto Blue Lock</footer>
+
+<script>
+const slides = document.getElementById("slides");
+const allSlides = document.querySelectorAll(".slide");
+const searchInput = document.getElementById("search");
+
+let index = 0;
+
+function showSlide(i){
+  slides.style.transform = `translateX(-${i * 100}%)`;
+}
+
+// Flechas
+function nextSlide(){
+  index = (index + 1) % allSlides.length;
+  showSlide(index);
+}
+
+function prevSlide(){
+  index = (index - 1 + allSlides.length) % allSlides.length;
+  showSlide(index);
+}
+
+// 🔍 BUSCADOR
+searchInput.addEventListener("input", () => {
+  const value = searchInput.value.toLowerCase().trim();
+
+  if (!value) return;
+
+  allSlides.forEach((slide, i) => {
+    const text = slide.innerText.toLowerCase();
+    if (text.includes(value)) {
+      index = i;
+      showSlide(index);
+    }
+  });
+});
+</script>
+
+
+</body>
+</html>
+
+
+
